@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpinWalk - Le Walkman à Vinyle Réinventé</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Animate On Scroll (AOS) for scroll-triggered animations -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet" />
+    <style>
+        /* Ajout d'une police Google Fonts pour le style */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .carbon-fiber {
+            background-color: #1a1a1a;
+            background-image: radial-gradient(black 15%, transparent 16%),
+            radial-gradient(black 15%, transparent 16%);
+            background-size: 10px 10px;
+            background-position: 0 0, 5px 5px;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-100 antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-effect border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <span class="text-2xl font-black tracking-tighter text-white">Spin<span class="text-indigo-500">Walk</span></span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#concept" data-i18n="navConcept" class="hover:text-indigo-400 px-3 py-2 rounded-md text-sm font-medium transition">Concept</a>
+                        <a href="#products" data-i18n="navProducts" class="hover:text-indigo-400 px-3 py-2 rounded-md text-sm font-medium transition">La Gamme</a>
+                        <a href="#compare" data-i18n="navCompare" class="hover:text-indigo-400 px-3 py-2 rounded-md text-sm font-medium transition">Comparatif</a>
+                        <a href="#contact" data-i18n="navContact" class="bg-indigo-600 hover:bg-indigo-700 px-4 py-2 rounded-full text-sm font-bold transition">Précommander</a>
+                        <select id="langSelect" class="bg-gray-800 text-gray-100 rounded-md px-2 py-1 text-sm">
+                            <option value="fr">FR</option>
+                            <option value="en">EN</option>
+                            <option value="zh">中文</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header data-aos="fade-up" class="relative h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <!-- Video background with gradient overlay -->
+            <video id="heroVideo" autoplay muted loop playsinline class="w-full h-full object-cover">
+                <source src="assets/studio_video.mp4" type="video/mp4">
+                <!-- fallback image -->
+                <img src="assets/spinwalkpop.png" alt="Vinyl Background">
+            </video>
+            <div class="absolute inset-0 bg-gradient-to-b from-gray-900/50 to-gray-900"></div>
+        </div>
+        
+        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto">
+            <h1 data-i18n="heroTitle" class="text-5xl md:text-7xl font-black mb-6 tracking-tight">
+                La chaleur du sillon,<br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-600">dans votre poche.</span>
+            </h1>
+            <p data-i18n="heroSubtitle" class="text-xl md:text-2xl text-gray-300 mb-10 font-light">
+                Découvrez le SpinWalk. L'auto-reverse analogique pour l'ère numérique.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#products" data-i18n="heroBtn1" class="px-8 py-4 bg-white text-gray-900 font-bold rounded-full hover:bg-gray-100 transition transform hover:scale-105">
+                    Découvrir la gamme
+                </a>
+                <a href="#concept" data-i18n="heroBtn2" class="px-8 py-4 border border-gray-500 text-white font-bold rounded-full hover:border-white transition">
+                    Comment ça marche ?
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Concept Section -->
+    <section id="concept" data-aos="fade-up" class="py-20 bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 data-i18n="conceptTitle" class="text-3xl font-bold text-white mb-4">Un défi technique fascinant</h2>
+                <p data-i18n="conceptDesc" class="text-gray-400 max-w-2xl mx-auto">
+                    Nous avons repensé la lecture vinyle nomade. Fini de retourner le disque manuellement.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="p-6 bg-gray-700 rounded-xl">
+                    <div class="text-4xl mb-4">🔄</div>
+                    <h3 data-i18n="feat1Title" class="text-xl font-bold text-white mb-2">Auto-Reverse Mécanique</h3>
+                    <p data-i18n="feat1Desc" class="text-gray-400">Un système ingénieux à double bras de lecture (dessus/dessous) permet une écoute continue sans interruption.</p>
+                </div>
+                <div class="p-6 bg-gray-700 rounded-xl">
+                    <div class="text-4xl mb-4">⚖️</div>
+                    <h3 data-i18n="feat2Title" class="text-xl font-bold text-white mb-2">Stabilité Gyroscopique</h3>
+                    <p data-i18n="feat2Desc" class="text-gray-400">Marchez, bougez. Notre système "Anti-Skip" (sur modèles Studio & Ref) assure que le diamant ne saute jamais.</p>
+                </div>
+                <div class="p-6 bg-gray-700 rounded-xl">
+                    <div class="text-4xl mb-4">📡</div>
+                    <h3 data-i18n="feat3Title" class="text-xl font-bold text-white mb-2">Connectivité Moderne</h3>
+                    <p data-i18n="feat3Desc" class="text-gray-400">Du Bluetooth aptX à l'enregistrement FLAC 24-bit, le SpinWalk relie le passé au futur.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" data-aos="fade-up" class="py-20 bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 data-i18n="productsTitle" class="text-4xl font-black text-center mb-16">La Gamme SpinWalk</h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                
+                <!-- Product 1: POP -->
+                <div class="bg-gray-800 rounded-2xl overflow-hidden border border-gray-700 hover:border-pink-500 transition duration-300 flex flex-col">
+                    <div class="h-48 bg-gray-700 flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-pink-500/20 to-blue-500/20"></div>
+                        <img src="assets/spinwalkpop.png" alt="SpinWalk Pop" class="h-full w-full object-cover" />
+                    </div>
+                    <div class="p-8 flex-1 flex flex-col">
+                        <div data-i18n="popCategory" class="uppercase tracking-wide text-sm text-pink-500 font-semibold">Entrée de gamme</div>
+                        <h3 class="mt-1 text-2xl font-bold text-white">SpinWalk "Pop"</h3>
+                        <p class="mt-2 text-pink-500 font-bold text-lg">399€</p>
+                        <p data-i18n="popDesc" class="mt-2 text-gray-400 text-sm">Le vinyle sans chichi. Coque transparente pour admirer la mécanique.</p>
+                        
+                        <ul class="mt-6 space-y-3 text-gray-300 text-sm flex-1">
+                            <li class="flex items-start"><span class="mr-2 text-pink-500">✓</span><span data-i18n="popFeat1">Compatible 45 tours (7")</span></li>
+                            <li class="flex items-start"><span class="mr-2 text-pink-500">✓</span><span data-i18n="popFeat2">Coque Polycarbonate Transparent</span></li>
+                            <li class="flex items-start"><span class="mr-2 text-pink-500">✓</span><span data-i18n="popFeat3">Auto-Reverse Mécanique simple</span></li>
+                            <li class="flex items-start"><span class="mr-2 text-pink-500">✓</span><span data-i18n="popFeat4">Haut-parleur de secours intégré</span></li>
+                        </ul>
+                        
+                        <div class="mt-8 pt-6 border-t border-gray-700">
+                            <button data-i18n="popBtn" class="w-full bg-gray-700 hover:bg-pink-600 text-white font-bold py-3 px-4 rounded-lg transition">
+                                Voir le Pop
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2: STUDIO -->
+                <div class="bg-gray-800 rounded-2xl overflow-hidden border border-gray-700 hover:border-indigo-500 transition duration-300 transform md:-translate-y-4 shadow-2xl shadow-indigo-500/10 flex flex-col relative">
+                    <div data-i18n="badgeBestSeller" class="absolute top-0 right-0 bg-indigo-600 text-white text-xs font-bold px-3 py-1 rounded-bl-lg">BEST SELLER</div>
+                    <div class="h-48 bg-gray-700 flex items-center justify-center">
+                        <img src="assets/spinwalStudio.png" alt="SpinWalk Studio" class="h-full w-full object-cover" />
+                    </div>
+                    <div class="p-8 flex-1 flex flex-col">
+                        <div data-i18n="studioCategory" class="uppercase tracking-wide text-sm text-indigo-400 font-semibold">Milieu de gamme</div>
+                        <h3 class="mt-1 text-2xl font-bold text-white">SpinWalk "Studio"</h3>
+                        <p class="mt-2 text-indigo-400 font-bold text-lg">699€</p>
+                        <p data-i18n="studioDesc" class="mt-2 text-gray-400 text-sm">L'équilibre parfait entre portabilité et fidélité sonore pour les mélomanes.</p>
+                        
+                        <ul class="mt-6 space-y-3 text-gray-300 text-sm flex-1">
+                            <li class="flex items-start"><span class="mr-2 text-indigo-400">✓</span><span data-i18n="studioFeat1">Compatible 33 & 45 tours</span></li>
+                            <li class="flex items-start"><span class="mr-2 text-indigo-400">✓</span><span data-i18n="studioFeat2">Cellule Audio-Technica interchangeable</span></li>
+                            <li class="flex items-start"><span class="mr-2 text-indigo-400">✓</span><span data-i18n="studioFeat3">Bluetooth 5.2 aptX</span></li>
+                            <li class="flex items-start"><span class="mr-2 text-indigo-400">✓</span><span data-i18n="studioFeat4">Système "Anti-Skip" gyroscopique</span></li>
+                        </ul>
+                        
+                        <div class="mt-8 pt-6 border-t border-gray-700">
+                            <button data-i18n="studioBtn" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-4 rounded-lg transition">
+                                Voir le Studio
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3: REFERENCE CARBON -->
+                <div class="bg-gray-800 rounded-2xl overflow-hidden border border-gray-700 hover:border-gray-400 transition duration-300 flex flex-col">
+                    <div class="h-48 carbon-fiber flex items-center justify-center">
+                        <img src="assets/spinwalkCarbon.png" alt="Reference Carbon" class="h-full w-full object-cover" />
+                    </div>
+                    <div class="p-8 flex-1 flex flex-col">
+                        <div data-i18n="carbonCategory" class="uppercase tracking-wide text-sm text-gray-400 font-semibold">Haut de gamme</div>
+                        <h3 class="mt-1 text-2xl font-bold text-white">Reference Carbon</h3>
+                        <p class="mt-2 text-gray-400 font-bold text-lg">999€</p>
+                        <p data-i18n="carbonDesc" class="mt-2 text-gray-400 text-sm">L'orfèvrerie audiophile nomade. Aluminium brossé et fibre de carbone.</p>
+                        
+                        <ul class="mt-6 space-y-3 text-gray-300 text-sm flex-1">
+                            <li class="flex items-start"><span class="mr-2 text-gray-400">✓</span><span data-i18n="carbonFeat1">Bras tangentiels en carbone</span></li>
+                            <li class="flex items-start"><span class="mr-2 text-gray-400">✓</span><span data-i18n="carbonFeat2">Enregistrement FLAC 24-bit sur SD</span></li>
+                            <li class="flex items-start"><span class="mr-2 text-gray-400">✓</span><span data-i18n="carbonFeat3">Écran OLED (Vitesse & Force d'appui)</span></li>
+                            <li class="flex items-start"><span class="mr-2 text-gray-400">✓</span><span data-i18n="carbonFeat4">Sortie symétrique haute impédance</span></li>
+                        </ul>
+                        
+                        <div class="mt-8 pt-6 border-t border-gray-700">
+                            <button data-i18n="carbonBtn" class="w-full bg-gray-600 hover:bg-gray-500 text-white font-bold py-3 px-4 rounded-lg transition">
+                                Voir le Reference
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Mise en situation -->
+    <section id="situation" class="py-20 bg-gray-900" data-aos="fade-up">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-black text-center mb-12 text-white">votre écoute n'a plus de limites</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="overflow-hidden rounded-lg shadow-lg">
+                    <img src="assets/pop_situation.png" alt="Pop en situation" class="w-full h-64 object-cover hover:scale-105 transition" />
+                </div>
+                <div class="overflow-hidden rounded-lg shadow-lg">
+                    <img src="assets/stuio_situation.png" alt="Studio en situation" class="w-full h-64 object-cover hover:scale-105 transition" />
+                </div>
+                <div class="overflow-hidden rounded-lg shadow-lg">
+                    <img src="assets/carbon_situation.png" alt="Reference Carbon en situation" class="w-full h-64 object-cover hover:scale-105 transition" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Table -->
+    <section id="compare" data-aos="fade-up" class="py-20 bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 data-i18n="compareTitle" class="text-3xl font-bold text-white text-center mb-12">Comparatif Technique</h2>
+            
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="text-gray-400 border-b border-gray-700 text-sm uppercase tracking-wider">
+                            <th class="p-4">Caractéristique</th>
+                            <th class="p-4 text-pink-500">SpinWalk Pop</th>
+                            <th class="p-4 text-indigo-400">SpinWalk Studio</th>
+                            <th class="p-4 text-white">Reference Carbon</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-gray-300 text-sm">
+                        <tr class="border-b border-gray-700 hover:bg-gray-700/50">
+                            <td class="p-4 font-bold">Matériau</td>
+                            <td class="p-4">Plastique transparent</td>
+                            <td class="p-4">Aluminium & Gomme</td>
+                            <td class="p-4">Carbone & Acier</td>
+                        </tr>
+                        <tr class="border-b border-gray-700 hover:bg-gray-700/50">
+                            <td class="p-4 font-bold">Cellule</td>
+                            <td class="p-4">Saphir fixe</td>
+                            <td class="p-4">MM interchangeable</td>
+                            <td class="p-4">MC Haute Fidélité</td>
+                        </tr>
+                        <tr class="border-b border-gray-700 hover:bg-gray-700/50">
+                            <td class="p-4 font-bold">Sans-fil</td>
+                            <td class="p-4 text-gray-500">Non</td>
+                            <td class="p-4">Bluetooth aptX</td>
+                            <td class="p-4">Bluetooth LDAC</td>
+                        </tr>
+                        <tr class="border-b border-gray-700 hover:bg-gray-700/50">
+                            <td class="p-4 font-bold">Autonomie</td>
+                            <td class="p-4">6 heures (Piles)</td>
+                            <td class="p-4">12 heures (USB-C)</td>
+                            <td class="p-4">20 heures (Lithium)</td>
+                        </tr>
+                        <tr class="border-b border-gray-700 hover:bg-gray-700/50">
+                            <td class="p-4 font-bold">Auto-Reverse</td>
+                            <td class="p-4">Mécanique simple</td>
+                            <td class="p-4">Optique + Tampon 3s</td>
+                            <td class="p-4">Infinite-Loop (Précision chirurgicale)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact / Précommande -->
+    <section id="contact" data-aos="fade-up" class="py-20 bg-gray-900">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 data-i18n="contactTitle" class="text-3xl font-bold text-white mb-6">Restez informé</h2>
+            <p data-i18n="contactDesc" class="text-gray-400 mb-8">
+                Vous souhaitez être prévenu de l'ouverture des précommandes ?
+                Envoyez-nous un simple email et nous vous tiendrons au courant –
+                pas de paiement requis, juste un clin d’œil à l'avance.
+            </p>
+            <a id="contactBtn" href="mailto:precommande@spinwalk.example?subject=Demande%20d'informations%20précommande" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-full transition">
+                Contacter par e-mail
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 border-t border-gray-800 pt-12 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-4 md:mb-0">
+                <span class="text-2xl font-black tracking-tighter text-white">Spin<span class="text-indigo-500">Walk</span></span>
+                <p class="text-gray-500 text-sm mt-2">© 2026 SpinWalk Audio. Designed by overgame studio for Coolyab.</p>
+            </div>
+            <div class="flex space-x-6">
+                <a href="#" class="text-gray-400 hover:text-white transition">Instagram</a>
+                <a href="#" class="text-gray-400 hover:text-white transition">Twitter</a>
+                <a href="#" class="text-gray-400 hover:text-white transition">Support</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- AOS script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+
+        // alternate hero videos every 10 seconds
+        const videos = [
+            'assets/studio_video.mp4',
+            'assets/carbon_video.mp4'
+        ];
+        let current = 0;
+        const heroVideo = document.getElementById('heroVideo');
+        setInterval(() => {
+            current = (current + 1) % videos.length;
+            if (heroVideo) {
+                heroVideo.querySelector('source').src = videos[current];
+                heroVideo.load();
+                heroVideo.play().catch(() => {});
+            }
+        }, 10000);
+
+        // internationalization
+        const translations = {
+            fr: {
+                navConcept: 'Concept',
+                navProducts: 'La Gamme',
+                navCompare: 'Comparatif',
+                navContact: 'Précommander',
+                heroTitle: 'La chaleur du sillon,\ndans votre poche.',
+                heroSubtitle: "Découvrez le SpinWalk. L'auto-reverse analogique pour l'ère numérique.",
+                heroBtn1: 'Découvrir la gamme',
+                heroBtn2: 'Comment ça marche ?',
+                conceptTitle: 'Un défi technique fascinant',
+                conceptDesc: 'Nous avons repensé la lecture vinyle nomade. Fini de retourner le disque manuellement.',
+                productsTitle: 'La Gamme SpinWalk',
+                compareTitle: 'Comparatif Technique',
+                contactTitle: 'Restez informé',
+                contactDesc: "Vous souhaitez être prévenu de l'ouverture des précommandes ?\nEnvoyez-nous un simple email et nous vous tiendrons au courant –\npas de paiement requis, juste un clin d’œil à l'avance.",
+                contactBtn: 'Contacter par e-mail',
+                popCategory: 'Entrée de gamme',
+                popDesc: 'Le vinyle sans chichi. Coque transparente pour admirer la mécanique.',
+                popFeat1: 'Compatible 45 tours (7")',
+                popFeat2: 'Coque Polycarbonate Transparent',
+                popFeat3: 'Auto-Reverse Mécanique simple',
+                popFeat4: 'Haut-parleur de secours intégré',
+                badgeBestSeller: 'BEST SELLER',
+                studioCategory: 'Milieu de gamme',
+                studioDesc: "L'équilibre parfait entre portabilité et fidélité sonore pour les mélomanes.",
+                studioFeat1: 'Compatible 33 & 45 tours',
+                studioFeat2: 'Cellule Audio-Technica interchangeable',
+                studioFeat3: 'Bluetooth 5.2 aptX',
+                studioFeat4: 'Système "Anti-Skip" gyroscopique',
+                carbonCategory: 'Haut de gamme',
+                carbonDesc: "L'orfèvrerie audiophile nomade. Aluminium brossé et fibre de carbone.",
+                carbonFeat1: 'Bras tangentiels en carbone',
+                carbonFeat2: 'Enregistrement FLAC 24-bit sur SD',
+                carbonFeat3: 'Écran OLED (Vitesse & Force d\'appui)',
+                carbonFeat4: 'Sortie symétrique haute impédance',
+                feat1Title: 'Auto-Reverse Mécanique',
+                feat1Desc: 'Un système ingénieux à double bras de lecture (dessus/dessous) permet une écoute continue sans interruption.',
+                feat2Title: 'Stabilité Gyroscopique',
+                feat2Desc: 'Marchez, bougez. Notre système "Anti-Skip" (sur modèles Studio & Ref) assure que le diamant ne saute jamais.',
+                feat3Title: 'Connectivité Moderne',
+                feat3Desc: 'Du Bluetooth aptX à l\'enregistrement FLAC 24-bit, le SpinWalk relie le passé au futur.'
+            },
+            en: {
+                navConcept: 'Concept',
+                navProducts: 'Our Range',
+                navCompare: 'Compare',
+                navContact: 'Preorder',
+                heroTitle: 'The warmth of the groove,\nin your pocket.',
+                heroSubtitle: 'Discover the SpinWalk. Analog auto-reverse for the digital age.',
+                heroBtn1: 'Explore range',
+                heroBtn2: 'How it works?',
+                conceptTitle: 'A fascinating technical challenge',
+                conceptDesc: 'We rethought mobile vinyl playback. No more flipping the record by hand.',
+                productsTitle: 'The SpinWalk Lineup',
+                compareTitle: 'Technical Comparison',
+                contactTitle: 'Stay informed',
+                contactDesc: "Want to be notified when preorders open?\nSend us a simple email and we’ll keep you posted –\nno payment required, just a heads-up.",
+                contactBtn: 'Contact by email',
+                popCategory: 'Entry-level',
+                popDesc: 'No-frills vinyl. Transparent shell to admire the mechanics.',
+                popFeat1: 'Compatible 45 rpm (7")',
+                popFeat2: 'Transparent polycarbonate shell',
+                popFeat3: 'Simple mechanical auto-reverse',
+                popFeat4: 'Built-in backup speaker',
+                badgeBestSeller: 'BEST SELLER',
+                studioCategory: 'Mid-range',
+                studioDesc: 'The perfect balance between portability and sound fidelity for music lovers.',
+                studioFeat1: 'Compatible 33 & 45 rpm',
+                studioFeat2: 'Interchangeable Audio-Technica cartridge',
+                studioFeat3: 'Bluetooth 5.2 aptX',
+                studioFeat4: 'Gyroscopic "Anti-Skip" system',
+                carbonCategory: 'High-end',
+                carbonDesc: 'Audiophile craftsmanship on the go. Brushed aluminum and carbon fiber.',
+                carbonFeat1: 'Carbon tangential arms',
+                carbonFeat2: '24-bit FLAC recording to SD',
+                carbonFeat3: 'OLED display (Speed & tracking force)',
+                carbonFeat4: 'High-impedance balanced output',
+                feat1Title: 'Mechanical Auto-Reverse',
+                feat1Desc: 'A clever dual-tonearm system (top/bottom) provides uninterrupted listening.',
+                feat2Title: 'Gyroscopic Stability',
+                feat2Desc: 'Walk, move. Our "Anti-Skip" (on Studio & Ref models) ensures the diamond never jumps.',
+                feat3Title: 'Modern Connectivity',
+                feat3Desc: 'From Bluetooth aptX to 24-bit FLAC recording, SpinWalk bridges past and future.',
+                popBtn: 'See the Pop',
+                studioBtn: 'See the Studio',
+                carbonBtn: 'See the Reference'
+            },
+            zh: {
+                navConcept: '概念',
+                navProducts: '产品系列',
+                navCompare: '对比',
+                navContact: '预订',
+                heroTitle: '沟槽的温暖，\n装进口袋。',
+                heroSubtitle: '发现 SpinWalk。数字时代的模拟自动翻转。',
+                heroBtn1: '探索系列',
+                heroBtn2: '如何工作？',
+                conceptTitle: '一个迷人的技术挑战',
+                conceptDesc: '我们重新思考了移动黑胶的播放方式。不再需要手动翻转唱片。',
+                productsTitle: 'SpinWalk 系列',
+                compareTitle: '技术比较',
+                contactTitle: '保持联系',
+                contactDesc: '想在预订开始时收到通知？\n给我们发一封简单的电子邮件，我们会通知您——无需付款，只需提醒。',
+                contactBtn: '通过电子邮件联系',
+                popCategory: '入门级',
+                popDesc: '纯粹的黑胶体验。透明外壳可欣赏机械结构。',
+                popFeat1: '兼容45转（7英寸）',
+                popFeat2: '透明聚碳酸酯外壳',
+                popFeat3: '简单机械自动翻转',
+                popFeat4: '内置备用扬声器',
+                badgeBestSeller: '畅销',
+                studioCategory: '中端',
+                studioDesc: '为音乐爱好者提供便携性与音质的完美平衡。',
+                studioFeat1: '兼容33和45转',
+                studioFeat2: '可更换的音频技术唱头',
+                studioFeat3: '蓝牙5.2 aptX',
+                studioFeat4: '陀螺仪防跳系统',
+                carbonCategory: '高端',
+                carbonDesc: '随身的发烧级工艺。拉丝铝和碳纤维。',
+                carbonFeat1: '碳纤维切线臂',
+                carbonFeat2: '24位FLAC录音到SD卡',
+                carbonFeat3: 'OLED显示屏（速度和压力）',
+                carbonFeat4: '高阻平衡输出',
+                feat1Title: '机械自动翻转',
+                feat1Desc: '巧妙的双唱臂系统（上/下）提供不间断的聆听体验。',
+                feat2Title: '陀螺仪稳定性',
+                feat2Desc: '走动吧，移动吧。我们的“防跳”系统（在Studio & Ref型号上）确保唱针永不跳针。',
+                feat3Title: '现代连接性',
+                feat3Desc: '从蓝牙aptX到24位FLAC录音，SpinWalk搭建了过去与未来的桥梁。',
+                popBtn: '查看 Pop',
+                studioBtn: '查看 Studio',
+                carbonBtn: '查看 Reference'
+            }
+        };
+        function updateLanguage(lang) {
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    el.innerText = translations[lang][key];
+                }
+            });
+        }
+        document.getElementById('langSelect').addEventListener('change', e => {
+            updateLanguage(e.target.value);
+        });
+        // initialize
+        updateLanguage('fr');
+    </script>
+</body>
+</html>
